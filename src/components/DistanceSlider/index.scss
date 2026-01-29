@@ -1,0 +1,70 @@
+/**
+ * DistanceSlider 组件样式
+ */
+
+.distance-slider {
+  &__presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  &__preset {
+    flex: 1;
+    min-width: 140px;
+    padding: 24px;
+    background: #f5f5f5;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    text-align: center;
+    &--active {
+      background: #e6f7ff;
+      border-color: #1890ff;
+    }
+  }
+  &__preset-label {
+    display: block;
+    font-size: 32px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  &__preset-range {
+    display: block;
+    font-size: 24px;
+    color: #999;
+  }
+  &__sliders {
+    margin-bottom: 32px;
+  }
+  &__slider-item {
+    margin-bottom: 40px;
+  }
+  &__label {
+    display: block;
+    font-size: 28px;
+    color: #666;
+    margin-bottom: 16px;
+  }
+  &__slider {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  &__value {
+    display: block;
+    font-size: 28px;
+    color: #1890ff;
+    font-weight: 600;
+    text-align: right;
+  }
+  &__current {
+    padding: 24px;
+    background: #f5f5f5;
+    border-radius: 12px;
+    text-align: center;
+  }
+  &__current-text {
+    font-size: 28px;
+    color: #666;
+  }
+}

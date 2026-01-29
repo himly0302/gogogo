@@ -1,0 +1,133 @@
+/**
+ * 结果展示页样式
+ */
+
+.travel-result {
+  min-height: 100vh;
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  &__empty {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+  }
+  &__empty-text {
+    font-size: 32px;
+    color: #999;
+    margin-bottom: 32px;
+  }
+  &__back-button {
+    width: 300px;
+    height: 88px;
+    background: #1890ff;
+    color: #fff;
+    font-size: 32px;
+    border-radius: 44px;
+  }
+  &__scroll {
+    flex: 1;
+    padding: 24px 32px;
+  }
+  &__section {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+  &__section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  &__section-title {
+    font-size: 36px;
+    font-weight: 600;
+    color: #333;
+  }
+  &__add-button {
+    width: 120px;
+    height: 56px;
+    background: #1890ff;
+    color: #fff;
+    font-size: 26px;
+    border-radius: 28px;
+    padding: 0;
+    line-height: 56px;
+  }
+  &__picker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    align-items: flex-end;
+  }
+  &__picker-content {
+    width: 100%;
+    max-height: 80%;
+    background: #fff;
+    border-radius: 24px 24px 0 0;
+    overflow: hidden;
+  }
+  &__picker-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    border-bottom: 2px solid #f5f5f5;
+    position: relative;
+  }
+  &__picker-title {
+    font-size: 36px;
+    font-weight: 600;
+    color: #333;
+  }
+  &__picker-close {
+    position: absolute;
+    right: 32px;
+    font-size: 48px;
+    color: #999;
+    padding: 8px;
+  }
+  &__footer {
+    display: flex;
+    gap: 16px;
+    padding: 24px 32px;
+    background: #fff;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
+  }
+  &__secondary-button {
+    flex: 1;
+    height: 96px;
+    background: #fff;
+    color: #666;
+    font-size: 32px;
+    font-weight: 600;
+    border-radius: 48px;
+    border: 2px solid #d9d9d9;
+    &::after {
+      border: none;
+    }
+  }
+  &__primary-button {
+    flex: 2;
+    height: 96px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    font-size: 32px;
+    font-weight: 600;
+    border-radius: 48px;
+    border: none;
+    &::after {
+      border: none;
+    }
+  }
+}

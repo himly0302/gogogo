@@ -4,3 +4,4 @@
 export * from './helpers';
 export * from './device';
 export * from './date';
+export * from './geo';

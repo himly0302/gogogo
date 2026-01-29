@@ -1,0 +1,40 @@
+/**
+ * TagSelector 组件样式
+ */
+
+.tag-selector {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: 16px 24px;
+    background: #f5f5f5;
+    border-radius: 48px;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+    &--selected {
+      background: #e6f7ff;
+      border-color: #1890ff;
+    }
+  }
+  &__icon {
+    font-size: 32px;
+    margin-right: 12px;
+  }
+  &__label {
+    font-size: 28px;
+    color: #333;
+  }
+  &__footer {
+    margin-top: 24px;
+    text-align: right;
+  }
+  &__count {
+    font-size: 24px;
+    color: #999;
+  }
+}

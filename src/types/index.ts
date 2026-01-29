@@ -42,3 +42,8 @@ export interface BaseState {
   isLoading: boolean;
   error: string | null;
 }
+
+/**
+ * 旅行相关类型
+ */
+export * from './travel';
