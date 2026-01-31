@@ -5,6 +5,15 @@
 格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.0.0/)，
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.1.2] - 2026-01-31
+
+### Fixed
+- **CityPicker 样式问题**：修复城市选择器搜索栏和省份列表的对齐问题
+  - 搜索框添加最大宽度并居中显示（max-width: 600px + margin: 0 auto）
+  - 省份列表项优化 Flex 布局，确保省份名称、数字和箭头对齐
+  - 添加 `gap` 和 `flex-shrink` 属性防止内容挤压
+  - 相关：`src/components/CityPicker/index.scss`
+
 ## [1.1.1] - 2026-01-31
 
 ### Fixed
