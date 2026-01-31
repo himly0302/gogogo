@@ -95,7 +95,10 @@ const CityPicker: FC<CityPickerProps> = ({ value, onChange, placeholder = 'è¯·é€
                   <View
                     key={city.id}
                     className='city-picker__item'
-                    onClick={() => handleSelectCity(city)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleSelectCity(city);
+                    }}
                   >
                     <Text className='city-picker__item-name'>{city.name}</Text>
                     <Text className='city-picker__item-province'>{city.province}</Text>
@@ -142,7 +145,10 @@ const CityPicker: FC<CityPickerProps> = ({ value, onChange, placeholder = 'è¯·é€
                 <View
                   key={city.id}
                   className='city-picker__item'
-                  onClick={() => handleSelectCity(city)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleSelectCity(city);
+                  }}
                 >
                   <Text className='city-picker__item-name'>{city.name}</Text>
                   {city.tags.length > 0 && (
