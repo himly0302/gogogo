@@ -62,7 +62,9 @@
     right: 32px;
     font-size: 48px;
     color: #999;
-    padding: 8px;
+    padding: 16px;
+    z-index: 1;
+    cursor: pointer;
   }
   &__search {
     padding: 24px 32px;

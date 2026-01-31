@@ -5,6 +5,14 @@
 格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.0.0/)，
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.1.1] - 2026-01-31
+
+### Fixed
+- **CityPicker 关闭按钮点击无效**：修复城市选择器弹窗关闭按钮无法响应点击的问题
+  - 将关闭按钮从 `Text` 组件改为 `View` 组件包裹
+  - 添加 `stopPropagation()` 阻止事件冒泡
+  - 相关：`src/components/CityPicker/index.tsx`
+
 ## [1.1.0] - 2026-01-29
 
 ### Added

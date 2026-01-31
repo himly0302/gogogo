@@ -46,78 +46,84 @@ const CityPicker: FC<CityPickerProps> = ({ value, onChange, placeholder = '请�
 
   if (!visible) {
     return (
-      <View className="city-picker" onClick={() => setVisible(true)}>
-        <View className="city-picker__trigger">
+      <View className='city-picker' onClick={() => setVisible(true)}>
+        <View className='city-picker__trigger'>
           <Text className={value ? 'city-picker__value' : 'city-picker__placeholder'}>
             {value?.name || placeholder}
           </Text>
-          <Text className="city-picker__arrow">›</Text>
+          <Text className='city-picker__arrow'>›</Text>
         </View>
       </View>
     );
   }
 
   return (
-    <View className="city-picker__modal" onClick={() => setVisible(false)}>
-      <View className="city-picker__content" onClick={(e) => e.stopPropagation()}>
+    <View className='city-picker__modal' onClick={() => setVisible(false)}>
+      <View className='city-picker__content' onClick={(e) => e.stopPropagation()}>
         {/* 头部 */}
-        <View className="city-picker__header">
-          <Text className="city-picker__title">选择城市</Text>
-          <Text className="city-picker__close" onClick={() => setVisible(false)}>
-            ✕
-          </Text>
+        <View className='city-picker__header'>
+          <Text className='city-picker__title'>选择城市</Text>
+          <View
+            className='city-picker__close'
+            onClick={(e) => {
+              e.stopPropagation();
+              setVisible(false);
+            }}
+          >
+            <Text>✕</Text>
+          </View>
         </View>
 
         {/* 搜索框 */}
-        <View className="city-picker__search">
+        <View className='city-picker__search'>
           <Input
-            className="city-picker__input"
-            placeholder="搜索城市或省份"
+            className='city-picker__input'
+            placeholder='搜索城市或省份'
             value={keyword}
             onInput={(e) => setKeyword(e.detail.value)}
           />
         </View>
 
         {/* 城市列表 */}
-        <ScrollView scrollY className="city-picker__list">
+        <ScrollView scrollY className='city-picker__list'>
           {/* 搜索结果 */}
           {keyword && (
-            <View className="city-picker__section">
-              <Text className="city-picker__section-title">搜索结果</Text>
+            <View className='city-picker__section'>
+              <Text className='city-picker__section-title'>搜索结果</Text>
               {searchResults.length > 0 ? (
                 searchResults.map((city) => (
                   <View
                     key={city.id}
-                    className="city-picker__item"
+                    className='city-picker__item'
                     onClick={() => handleSelectCity(city)}
                   >
-                    <Text className="city-picker__item-name">{city.name}</Text>
-                    <Text className="city-picker__item-province">{city.province}</Text>
+                    <Text className='city-picker__item-name'>{city.name}</Text>
+                    <Text className='city-picker__item-province'>{city.province}</Text>
                   </View>
                 ))
               ) : (
-                <Text className="city-picker__empty">未找到相关城市</Text>
+                <Text className='city-picker__empty'>未找到相关城市</Text>
               )}
             </View>
           )}
 
           {/* 按省份浏览 */}
           {!keyword && !selectedProvince && (
-            <View className="city-picker__section">
-              <Text className="city-picker__section-title">按省份选择</Text>
+            <View className='city-picker__section'>
+              <Text className='city-picker__section-title'>按省份选择</Text>
               {provinces.map((province) => {
                 const citiesInProvince = getCitiesByProvince()[province] || [];
                 return (
                   <View
                     key={province}
-                    className="city-picker__province"
+                    className='city-picker__province'
                     onClick={() => setSelectedProvince(province)}
                   >
-                    <Text className="city-picker__province-name">{province}</Text>
-                    <Text className="city-picker__province-count">
+                    <Text className='city-picker__province-name'>{province}</Text>
+                    <Text className='city-picker__province-count'>
                       ({citiesInProvince.length})
                     </Text>
-                    <Text className="city-picker__province-arrow">›</Text>
+                    <Text className='city-picker__province-arrow'>›</Text>
                   </View>
                 );
               })}
@@ -126,21 +132,21 @@ const CityPicker: FC<CityPickerProps> = ({ value, onChange, placeholder = '请�
 
           {/* 某省份的城市列表 */}
           {!keyword && selectedProvince && (
-            <View className="city-picker__section">
-              <View className="city-picker__back" onClick={() => setSelectedProvince('')}>
-                <Text className="city-picker__back-arrow">‹</Text>
-                <Text className="city-picker__back-text">返回</Text>
+            <View className='city-picker__section'>
+              <View className='city-picker__back' onClick={() => setSelectedProvince('')}>
+                <Text className='city-picker__back-arrow'>‹</Text>
+                <Text className='city-picker__back-text'>返回</Text>
               </View>
-              <Text className="city-picker__section-title">{selectedProvince}</Text>
+              <Text className='city-picker__section-title'>{selectedProvince}</Text>
               {provinceCities.map((city) => (
                 <View
                   key={city.id}
-                  className="city-picker__item"
+                  className='city-picker__item'
                   onClick={() => handleSelectCity(city)}
                 >
-                  <Text className="city-picker__item-name">{city.name}</Text>
+                  <Text className='city-picker__item-name'>{city.name}</Text>
                   {city.tags.length > 0 && (
-                    <Text className="city-picker__item-tags">
+                    <Text className='city-picker__item-tags'>
                       {city.tags.slice(0, 2).map((tag) => {
                         const tagConfig = {
                           historical: '🏛️',
@@ -155,7 +161,7 @@ const CityPicker: FC<CityPickerProps> = ({ value, onChange, placeholder = '请�
                           leisure: '🌴',
                         }[tag];
                         return (
-                          <Text key={tag} className="city-picker__tag">
+                          <Text key={tag} className='city-picker__tag'>
                             {tagConfig}
                           </Text>
                         );
