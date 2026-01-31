@@ -5,6 +5,15 @@
 格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.0.0/)，
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.1.4] - 2026-01-31
+
+### Fixed
+- **CityPicker 已选城市时默认显示问题**：修复已选择城市时打开弹窗仍显示所有省份的问题
+  - 添加 `useEffect` 监听弹窗打开状态和选中城市
+  - 当弹窗打开且有选中城市时，自动定位到该城市所在省份
+  - 弹窗关闭时重置搜索关键词和选中省份状态
+  - 相关：`src/components/CityPicker/index.tsx`
+
 ## [1.1.3] - 2026-01-31
 
 ### Fixed

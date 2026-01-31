@@ -2,7 +2,7 @@
  * 城市选择器组件
  */
 
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { View, Text, Input, ScrollView } from '@tarojs/components';
 import { CITIES, getProvinces, getCitiesByProvince } from '@/data/cities';
 import type { City } from '@/types';
@@ -43,6 +43,17 @@ const CityPicker: FC<CityPickerProps> = ({ value, onChange, placeholder = '请�
     setKeyword('');
     setSelectedProvince('');
   };
+
+  // 当弹窗打开时，如果有选中城市，自动定位到该城市所在省份
+  useEffect(() => {
+    if (visible && value) {
+      setSelectedProvince(value.province);
+    } else if (!visible) {
+      // 弹窗关闭时重置状态
+      setSelectedProvince('');
+      setKeyword('');
+    }
+  }, [visible, value]);
 
   if (!visible) {
     return (
