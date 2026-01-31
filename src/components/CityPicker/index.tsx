@@ -102,19 +102,29 @@ const CityPicker: FC<CityPickerProps> = ({ value, onChange, placeholder = '请�
             <View className='city-picker__section'>
               <Text className='city-picker__section-title'>搜索结果</Text>
               {searchResults.length > 0 ? (
-                searchResults.map((city) => (
-                  <View
-                    key={city.id}
-                    className='city-picker__item'
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleSelectCity(city);
-                    }}
-                  >
-                    <Text className='city-picker__item-name'>{city.name}</Text>
-                    <Text className='city-picker__item-province'>{city.province}</Text>
-                  </View>
-                ))
+                searchResults.map((city) => {
+                  const isSelected = value?.id === city.id;
+                  return (
+                    <View
+                      key={city.id}
+                      className={`city-picker__item${isSelected ? ' city-picker__item-selected' : ''}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleSelectCity(city);
+                      }}
+                    >
+                      <Text
+                        className={`city-picker__item-name${
+                          isSelected ? ' city-picker__item-selected-name' : ''
+                        }`}
+                      >
+                        {city.name}
+                      </Text>
+                      <Text className='city-picker__item-province'>{city.province}</Text>
+                      {isSelected && <Text className='city-picker__item-check'>✓</Text>}
+                    </View>
+                  );
+                })
               ) : (
                 <Text className='city-picker__empty'>未找到相关城市</Text>
               )}
@@ -152,41 +162,51 @@ const CityPicker: FC<CityPickerProps> = ({ value, onChange, placeholder = '请�
                 <Text className='city-picker__back-text'>返回</Text>
               </View>
               <Text className='city-picker__section-title'>{selectedProvince}</Text>
-              {provinceCities.map((city) => (
-                <View
-                  key={city.id}
-                  className='city-picker__item'
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleSelectCity(city);
-                  }}
-                >
-                  <Text className='city-picker__item-name'>{city.name}</Text>
-                  {city.tags.length > 0 && (
-                    <Text className='city-picker__item-tags'>
-                      {city.tags.slice(0, 2).map((tag) => {
-                        const tagConfig = {
-                          historical: '🏛️',
-                          natural: '🏔️',
-                          modern: '🏙️',
-                          coastal: '🏖️',
-                          mountain: '⛰️',
-                          food: '🍜',
-                          art: '🎨',
-                          ancient: '🏯',
-                          ethnic: '🎭',
-                          leisure: '🌴',
-                        }[tag];
-                        return (
-                          <Text key={tag} className='city-picker__tag'>
-                            {tagConfig}
-                          </Text>
-                        );
-                      })}
+              {provinceCities.map((city) => {
+                const isSelected = value?.id === city.id;
+                return (
+                  <View
+                    key={city.id}
+                    className={`city-picker__item${isSelected ? ' city-picker__item-selected' : ''}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleSelectCity(city);
+                    }}
+                  >
+                    <Text
+                      className={`city-picker__item-name${
+                        isSelected ? ' city-picker__item-selected-name' : ''
+                      }`}
+                    >
+                      {city.name}
                     </Text>
-                  )}
-                </View>
-              ))}
+                    {city.tags.length > 0 && (
+                      <Text className='city-picker__item-tags'>
+                        {city.tags.slice(0, 2).map((tag) => {
+                          const tagConfig = {
+                            historical: '🏛️',
+                            natural: '🏔️',
+                            modern: '🏙️',
+                            coastal: '🏖️',
+                            mountain: '⛰️',
+                            food: '🍜',
+                            art: '🎨',
+                            ancient: '🏯',
+                            ethnic: '🎭',
+                            leisure: '🌴',
+                          }[tag];
+                          return (
+                            <Text key={tag} className='city-picker__tag'>
+                              {tagConfig}
+                            </Text>
+                          );
+                        })}
+                      </Text>
+                    )}
+                    {isSelected && <Text className='city-picker__item-check'>✓</Text>}
+                  </View>
+                );
+              })}
             </View>
           )}
         </ScrollView>

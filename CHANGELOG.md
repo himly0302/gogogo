@@ -5,6 +5,17 @@
 格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.0.0/)，
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.1.5] - 2026-01-31
+
+### Fixed
+- **CityPicker 返回箭头对齐和选中状态问题**：修复省份城市列表的 UI 细节问题
+  - 修复返回箭头和文字的垂直对齐，添加 `line-height: 1` 和 `justify-content`
+  - 为已选中的城市添加视觉区分：背景色、蓝色文字、加粗、勾选图标
+  - 优化选中状态的样式类，符合 stylelint 规范
+  - 相关文件：
+    - `src/components/CityPicker/index.tsx`
+    - `src/components/CityPicker/index.scss`
+
 ## [1.1.4] - 2026-01-31
 
 ### Fixed
