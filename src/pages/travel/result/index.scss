@@ -35,7 +35,7 @@
   &__section {
     background: #fff;
     border-radius: 16px;
-    padding: 32px;
+    padding: 32px 32px 32px 32px;
     margin: 0 32px 24px 32px;
   }
   &__section-header {
@@ -59,6 +59,7 @@
     border-radius: 28px;
     padding: 0;
     line-height: 56px;
+    margin-left: auto;
     &::after {
       border: none;
     }
@@ -137,6 +138,7 @@
     border: none;
     line-height: 96px;
     padding: 0;
+    margin-top: 0 !important;
     &::after {
       border: none;
     }
