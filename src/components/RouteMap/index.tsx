@@ -4,8 +4,9 @@
 
 import { FC, useEffect, useRef } from 'react';
 import { View, Canvas, Text } from '@tarojs/components';
-import type { City, TravelRoute } from '@/types';
-import { calculateTotalDistance, formatDistance } from '@/utils/geo';
+import Taro from '@tarojs/taro';
+import type { TravelRoute } from '@/types';
+import { formatDistance } from '@/utils/geo';
 import './index.scss';
 
 interface RouteMapProps {
@@ -41,12 +42,12 @@ const RouteMap: FC<RouteMapProps> = ({ route }) => {
 
   const drawRoute = (
     ctx: any,
-    route: TravelRoute,
+    routeData: TravelRoute,
     canvasWidth: number,
     canvasHeight: number
   ) => {
     // 构建城市列表
-    const cities = [route.startCity, ...route.waypointCities, route.destinationCity];
+    const cities = [routeData.startCity, ...routeData.waypointCities, routeData.destinationCity];
 
     if (cities.length === 0) return;
 
@@ -117,34 +118,34 @@ const RouteMap: FC<RouteMapProps> = ({ route }) => {
   const cities = [route.startCity, ...route.waypointCities, route.destinationCity];
 
   return (
-    <View className="route-map">
+    <View className='route-map'>
       <Canvas
-        id="route-map-canvas"
+        id='route-map-canvas'
         ref={canvasRef}
-        type="2d"
-        className="route-map__canvas"
+        type='2d'
+        className='route-map__canvas'
       />
 
       {/* 路线信息 */}
-      <View className="route-map__info">
-        <Text className="route-map__total-distance">
+      <View className='route-map__info'>
+        <Text className='route-map__total-distance'>
           总距离：{formatDistance(route.totalDistance)}
         </Text>
-        <Text className="route-map__city-count">
+        <Text className='route-map__city-count'>
           途经 {cities.length} 个城市
         </Text>
       </View>
 
       {/* 城市列表 */}
-      <View className="route-map__cities">
+      <View className='route-map__cities'>
         {cities.map((city, index) => (
-          <View key={city.id} className="route-map__city-item">
+          <View key={city.id} className='route-map__city-item'>
             <View className={`route-map__city-badge route-map__city-badge--${index === 0 ? 'start' : index === cities.length - 1 ? 'end' : 'waypoint'}`}>
-              <Text className="route-map__city-badge-text">
+              <Text className='route-map__city-badge-text'>
                 {index === 0 ? '起' : index === cities.length - 1 ? '终' : index}
               </Text>
             </View>
-            <Text className="route-map__city-name">{city.name}</Text>
+            <Text className='route-map__city-name'>{city.name}</Text>
           </View>
         ))}
       </View>

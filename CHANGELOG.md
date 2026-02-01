@@ -5,6 +5,16 @@
 格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.0.0/)，
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.2.1] - 2026-02-01
+
+### Fixed
+- **RouteMap 组件 Taro 导入缺失**：修复触发保存路线时 `_createSelectorQuery is not defined` 错误
+  - 添加缺失的 `import Taro from '@tarojs/taro';` 导入语句
+  - 移除未使用的 `City` 类型和 `calculateTotalDistance` 函数导入
+  - 修复 `drawRoute` 函数参数与外部作用域变量重名问题
+  - 统一 JSX 引号风格为单引号符合 ESLint 规范
+  - 相关：`src/components/RouteMap/index.tsx`
+
 ## [1.2.0] - 2026-02-01
 
 ### Fixed
