@@ -5,6 +5,18 @@
 格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.0.0/)，
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.1.6] - 2026-02-01
+
+### Fixed
+- **CityPicker 小图标对齐问题**：修复省份列表箭头和城市列表勾选图标的对齐问题
+  - 重构城市列表项布局结构，将文本/标签与勾选图标分离到不同容器
+  - 为所有图标添加 `line-height: 1`、`align-self: center` 和 `flex-shrink: 0` 确保对齐
+  - 添加 `city-picker__item-left` 容器统一管理左侧内容
+  - 优化列表项间距和布局，视觉效果更加统一专业
+  - 相关文件：
+    - `src/components/CityPicker/index.tsx`
+    - `src/components/CityPicker/index.scss`
+
 ## [1.1.5] - 2026-01-31
 
 ### Fixed

@@ -110,6 +110,7 @@
     padding: 28px 0;
     border-bottom: 1px solid #f5f5f5;
     transition: background-color 0.2s;
+    gap: 16px;
   }
 
   &__item-selected {
@@ -119,6 +120,14 @@
     margin-left: -16px;
     margin-right: -16px;
     border-radius: 8px;
+  }
+
+  &__item-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+    min-width: 0;
   }
 
   &__item-name {
@@ -140,6 +149,9 @@
     font-size: 36px;
     color: #1890ff;
     margin-left: 16px;
+    line-height: 1;
+    align-self: center;
+    flex-shrink: 0;
   }
 
   &__item-tags {
@@ -178,6 +190,8 @@
     color: #999;
     font-weight: 300;
     flex-shrink: 0;
+    line-height: 1;
+    align-self: center;
   }
 
   &__empty {

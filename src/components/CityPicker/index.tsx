@@ -113,14 +113,16 @@ const CityPicker: FC<CityPickerProps> = ({ value, onChange, placeholder = '请�
                         handleSelectCity(city);
                       }}
                     >
-                      <Text
-                        className={`city-picker__item-name${
-                          isSelected ? ' city-picker__item-selected-name' : ''
-                        }`}
-                      >
-                        {city.name}
-                      </Text>
-                      <Text className='city-picker__item-province'>{city.province}</Text>
+                      <View className='city-picker__item-left'>
+                        <Text
+                          className={`city-picker__item-name${
+                            isSelected ? ' city-picker__item-selected-name' : ''
+                          }`}
+                        >
+                          {city.name}
+                        </Text>
+                        <Text className='city-picker__item-province'>{city.province}</Text>
+                      </View>
                       {isSelected && <Text className='city-picker__item-check'>✓</Text>}
                     </View>
                   );
@@ -173,36 +175,38 @@ const CityPicker: FC<CityPickerProps> = ({ value, onChange, placeholder = '请�
                       handleSelectCity(city);
                     }}
                   >
-                    <Text
-                      className={`city-picker__item-name${
-                        isSelected ? ' city-picker__item-selected-name' : ''
-                      }`}
-                    >
-                      {city.name}
-                    </Text>
-                    {city.tags.length > 0 && (
-                      <Text className='city-picker__item-tags'>
-                        {city.tags.slice(0, 2).map((tag) => {
-                          const tagConfig = {
-                            historical: '🏛️',
-                            natural: '🏔️',
-                            modern: '🏙️',
-                            coastal: '🏖️',
-                            mountain: '⛰️',
-                            food: '🍜',
-                            art: '🎨',
-                            ancient: '🏯',
-                            ethnic: '🎭',
-                            leisure: '🌴',
-                          }[tag];
-                          return (
-                            <Text key={tag} className='city-picker__tag'>
-                              {tagConfig}
-                            </Text>
-                          );
-                        })}
+                    <View className='city-picker__item-left'>
+                      <Text
+                        className={`city-picker__item-name${
+                          isSelected ? ' city-picker__item-selected-name' : ''
+                        }`}
+                      >
+                        {city.name}
                       </Text>
-                    )}
+                      {city.tags.length > 0 && (
+                        <Text className='city-picker__item-tags'>
+                          {city.tags.slice(0, 2).map((tag) => {
+                            const tagConfig = {
+                              historical: '🏛️',
+                              natural: '🏔️',
+                              modern: '🏙️',
+                              coastal: '🏖️',
+                              mountain: '⛰️',
+                              food: '🍜',
+                              art: '🎨',
+                              ancient: '🏯',
+                              ethnic: '🎭',
+                              leisure: '🌴',
+                            }[tag];
+                            return (
+                              <Text key={tag} className='city-picker__tag'>
+                                {tagConfig}
+                              </Text>
+                            );
+                          })}
+                        </Text>
+                      )}
+                    </View>
                     {isSelected && <Text className='city-picker__item-check'>✓</Text>}
                   </View>
                 );
