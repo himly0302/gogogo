@@ -27,7 +27,6 @@ const TravelResult: FC = () => {
     clearRoute,
   } = useTravelStore();
 
-  const [showCityPicker, setShowCityPicker] = useState(false);
 
   useLoad(() => {
     Taro.setNavigationBarTitle({ title: '目的地推荐' });
@@ -62,7 +61,6 @@ const TravelResult: FC = () => {
       return;
     }
     addWaypointCity(city);
-    setShowCityPicker(false);
     Taro.showToast({
       title: '添加成功',
       icon: 'success',
@@ -91,13 +89,6 @@ const TravelResult: FC = () => {
         <View className="travel-result__section">
           <View className="travel-result__section-header">
             <Text className="travel-result__section-title">中途城市</Text>
-            <Button
-              className="travel-result__add-button"
-              onClick={() => setShowCityPicker(true)}
-              disabled={waypointCities.length >= 5}
-            >
-              添加
-            </Button>
           </View>
 
           <WaypointList
@@ -106,25 +97,9 @@ const TravelResult: FC = () => {
             onClear={clearWaypoints}
             max={5}
           />
-        </View>
 
-        {/* 城市选择器 */}
-        {showCityPicker && (
-          <View className="travel-result__picker">
-            <View className="travel-result__picker-content">
-              <View className="travel-result__picker-header">
-                <Text className="travel-result__picker-title">选择中途城市</Text>
-                <Text
-                  className="travel-result__picker-close"
-                  onClick={() => setShowCityPicker(false)}
-                >
-                  ✕
-                </Text>
-              </View>
-              <CityPicker onChange={handleAddWaypoint} />
-            </View>
-          </View>
-        )}
+          <CityPicker onChange={handleAddWaypoint} placeholder="添加中途城市" />
+        </View>
       </ScrollView>
 
       {/* 底部按钮 */}

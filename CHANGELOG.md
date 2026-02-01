@@ -5,6 +5,18 @@
 格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.0.0/)，
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.2.0] - 2026-02-01
+
+### Fixed
+- **移除双层弹窗嵌套问题**：修复添加中途城市时的双层弹窗体验问题
+  - 移除 result 页面中的外层弹窗包裹
+  - 直接使用 CityPicker 组件自带的弹窗功能
+  - 删除不再使用的 showCityPicker 状态和相关样式
+  - 简化代码结构，提升用户体验
+  - 相关文件：
+    - `src/pages/travel/result/index.tsx`
+    - `src/pages/travel/result/index.scss`
+
 ## [1.1.9] - 2026-02-01
 
 ### Fixed

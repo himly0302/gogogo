@@ -42,9 +42,6 @@ const CityPicker: FC<CityPickerProps> = ({ value, onChange, placeholder = '请�
     : [];
 
   const handleSelectCity = (city: City) => {
-    // 更新 travel store 中的出发城市
-    setStartCity(city);
-
     onChange?.(city);
     setVisible(false);
     setKeyword('');
