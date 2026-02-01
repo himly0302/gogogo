@@ -5,7 +5,9 @@
 import { FC, useState, useEffect } from 'react';
 import { View, Text, Input, ScrollView } from '@tarojs/components';
 import { CITIES, getProvinces, getCitiesByProvince } from '@/data/cities';
+import { CITY_TAGS } from '@/constants';
 import type { City } from '@/types';
+import useTravelStore from '@/stores/travel';
 import './index.scss';
 
 interface CityPickerProps {
@@ -18,6 +20,8 @@ const CityPicker: FC<CityPickerProps> = ({ value, onChange, placeholder = '请�
   const [visible, setVisible] = useState(false);
   const [keyword, setKeyword] = useState('');
   const [selectedProvince, setSelectedProvince] = useState<string>('');
+
+  const { allCities, setStartCity } = useTravelStore();
 
   const provinces = getProvinces();
 
@@ -38,6 +42,14 @@ const CityPicker: FC<CityPickerProps> = ({ value, onChange, placeholder = '请�
     : [];
 
   const handleSelectCity = (city: City) => {
+    // 将选中的城市缓存到 travel store 中
+    if (!allCities.some((c) => c.id === city.id)) {
+      useTravelStore.setState({ allCities: [...allCities, city] });
+    }
+
+    // 如果是作为出发城市使用，也更新 startCity
+    setStartCity(city);
+
     onChange?.(city);
     setVisible(false);
     setKeyword('');
@@ -186,18 +198,7 @@ const CityPicker: FC<CityPickerProps> = ({ value, onChange, placeholder = '请�
                       {city.tags.length > 0 && (
                         <Text className='city-picker__item-tags'>
                           {city.tags.slice(0, 2).map((tag) => {
-                            const tagConfig = {
-                              historical: '🏛️',
-                              natural: '🏔️',
-                              modern: '🏙️',
-                              coastal: '🏖️',
-                              mountain: '⛰️',
-                              food: '🍜',
-                              art: '🎨',
-                              ancient: '🏯',
-                              ethnic: '🎭',
-                              leisure: '🌴',
-                            }[tag];
+                            const tagConfig = CITY_TAGS[tag].icon;
                             return (
                               <Text key={tag} className='city-picker__tag'>
                                 {tagConfig}

@@ -67,7 +67,22 @@ const TravelSmart: FC = () => {
           </View>
         </View>
 
-        {/* 意愿描述 */}
+        {/* 标签选择 */}
+        <View className="travel-smart__section">
+          <Text className="travel-smart__label">
+            选择标签
+            <Text className="travel-smart__label-hint">
+              最多选择3个标签
+            </Text>
+          </Text>
+          <TagSelector
+            value={selectedTags}
+            onChange={setSelectedTags}
+            max={3}
+          />
+        </View>
+
+         {/* 意愿描述 */}
         <View className="travel-smart__section">
           <Text className="travel-smart__label">
             旅行意愿（可选）
@@ -82,21 +97,6 @@ const TravelSmart: FC = () => {
             onInput={(e) => setDescription(e.detail.value)}
             maxlength={200}
             autoHeight
-          />
-        </View>
-
-        {/* 标签选择 */}
-        <View className="travel-smart__section">
-          <Text className="travel-smart__label">
-            选择标签
-            <Text className="travel-smart__label-hint">
-              最多选择5个标签
-            </Text>
-          </Text>
-          <TagSelector
-            value={selectedTags}
-            onChange={setSelectedTags}
-            max={5}
           />
         </View>
 

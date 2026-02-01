@@ -5,6 +5,16 @@
 格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.0.0/)，
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.1.7] - 2026-02-01
+
+### Fixed
+- **CityPicker 城市数据缓存**：修复选择城市时未使用 travel store 缓存逻辑的问题
+  - 在 CityPicker 组件中集成 useTravelStore，使用 allCities 字段缓存选中的城市
+  - 修改 handleSelectCity 函数，将选中的城市添加到 store 的 allCities 数组中
+  - 同时更新 startCity 状态，确保旅行功能的出发城市正确设置
+  - 避免重复添加相同城市，通过 city.id 进行去重判断
+  - 相关：`src/components/CityPicker/index.tsx`
+
 ## [1.1.6] - 2026-02-01
 
 ### Fixed
