@@ -21,7 +21,7 @@ const CityPicker: FC<CityPickerProps> = ({ value, onChange, placeholder = '请�
   const [keyword, setKeyword] = useState('');
   const [selectedProvince, setSelectedProvince] = useState<string>('');
 
-  const { allCities, setStartCity } = useTravelStore();
+  const { setStartCity } = useTravelStore();
 
   const provinces = getProvinces();
 
@@ -42,12 +42,7 @@ const CityPicker: FC<CityPickerProps> = ({ value, onChange, placeholder = '请�
     : [];
 
   const handleSelectCity = (city: City) => {
-    // 将选中的城市缓存到 travel store 中
-    if (!allCities.some((c) => c.id === city.id)) {
-      useTravelStore.setState({ allCities: [...allCities, city] });
-    }
-
-    // 如果是作为出发城市使用，也更新 startCity
+    // 更新 travel store 中的出发城市
     setStartCity(city);
 
     onChange?.(city);

@@ -3,9 +3,9 @@
  */
 
 import { create } from 'zustand';
-import { getSmartRecommendation, getRandomDestination, getSuggestedWaypoints, createRoute } from '@/services/travel';
-import { set, get } from '@/services/storage';
-import type { City, TravelMode, TravelPreference, DistanceRange, TravelRoute, CityTag } from '@/types';
+import { getSmartRecommendation, getRandomDestination, createRoute } from '@/services/travel';
+import storage from '@/services/storage';
+import type { City, TravelMode, TravelPreference, DistanceRange, TravelRoute } from '@/types';
 
 const STORAGE_KEY = 'travel_route_history';
 
@@ -19,9 +19,6 @@ interface TravelState {
   distanceRange: DistanceRange;
   isLoading: boolean;
   error: string | null;
-
-  // 城市数据
-  allCities: City[];
 
   // 历史记录
   routeHistory: TravelRoute[];
@@ -56,7 +53,6 @@ const useTravelStore = create<TravelState>((set, get) => ({
   },
   isLoading: false,
   error: null,
-  allCities: [],
   routeHistory: [],
 
   // Actions
@@ -148,7 +144,7 @@ const useTravelStore = create<TravelState>((set, get) => ({
     set({ routeHistory: newHistory });
 
     // 持久化到本地存储
-    set(STORAGE_KEY, newHistory);
+    storage.set(STORAGE_KEY, newHistory);
   },
 
   clearRoute: () => {
@@ -160,13 +156,13 @@ const useTravelStore = create<TravelState>((set, get) => ({
   },
 
   loadRouteHistory: () => {
-    const history = get<TravelRoute[]>(STORAGE_KEY, []);
+    const history = storage.get<TravelRoute[]>(STORAGE_KEY, []);
     set({ routeHistory: history || [] });
   },
 
   clearHistory: () => {
     set({ routeHistory: [] });
-    set(STORAGE_KEY, []);
+    storage.set(STORAGE_KEY, []);
   },
 }));
 

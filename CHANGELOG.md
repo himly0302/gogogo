@@ -5,6 +5,18 @@
 格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.0.0/)，
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.1.8] - 2026-02-01
+
+### Fixed
+- **移除未使用的 allCities 字段**：清理 travel store 中的冗余代码
+  - 从 TravelState 接口中删除 allCities 定义
+  - 从 store 初始状态中删除 allCities 初始化
+  - 从 CityPicker 组件中删除 allCities 相关逻辑
+  - 修复 storage 模块导入方式，使用默认导出避免命名冲突
+  - 相关文件：
+    - `src/stores/travel.ts`
+    - `src/components/CityPicker/index.tsx`
+
 ## [1.1.7] - 2026-02-01
 
 ### Fixed
