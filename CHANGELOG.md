@@ -5,6 +5,18 @@
 格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.0.0/)，
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.1.9] - 2026-02-01
+
+### Fixed
+- **结果页 UI 对齐和间距问题**：修复旅行结果页的多个 UI 样式问题
+  - 修复白框右侧无间隔：为 scroll 容器移除右侧内边距，为 section 添加左右外边距（32px）
+  - 修复 CityCard 组件边距：添加左右外边距（32px）保持与页面其他元素一致
+  - 修复添加按钮位置：添加 `flex-shrink: 0` 和 `&::after { border: none }` 防止按钮变形
+  - 修复底部按钮对齐：添加 `align-items: center`、统一 `line-height` 和 `min-height` 确保按钮对齐
+  - 相关文件：
+    - `src/pages/travel/result/index.scss`
+    - `src/components/CityCard/index.scss`
+
 ## [1.1.8] - 2026-02-01
 
 ### Fixed
