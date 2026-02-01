@@ -98,7 +98,7 @@ const TravelResult: FC = () => {
             max={5}
           />
 
-          <CityPicker onChange={handleAddWaypoint} placeholder="添加中途城市" />
+          {waypointCities.length < 5 && <CityPicker onChange={handleAddWaypoint} placeholder="添加中途城市" />}
         </View>
       </ScrollView>
 
